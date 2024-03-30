@@ -11,7 +11,7 @@ namespace Bank.Service.Account.Models
 
         [ForeignKey("AccountHolder")]
         public int AccountHolderId { get; set; }
-        //public virtual AccountHolder AccountHolder { get; set; } 
+        //public virtual AccountHolder AccountHolder { get; set; }
 
         public string AccountNumber { get; set; }
         public string AccountType { get; set; } // e.g., Cheque, Savings, FixedDeposit
