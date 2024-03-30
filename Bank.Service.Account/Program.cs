@@ -1,6 +1,21 @@
+using Bank.Service.Account.Data;
+using Bank.Service.AccountHolder.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+//builder.Services.AddDbContext<AppDbContext>(option =>
+//{
+//    option.UseSqlServer(builder.Configuration.GetConnectionString("AccountHolderDb"));
+//});
+
+builder.Services.AddDbContext<AccountDbContext>(option =>
+{
+    option.UseSqlServer(builder.Configuration.GetConnectionString("AccountsDb"));
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
