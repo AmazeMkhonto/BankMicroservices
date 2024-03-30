@@ -1,0 +1,6 @@
+@Bank.Service.Audit_HostAddress = http://localhost:5041
+
+GET {{Bank.Service.Audit_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
