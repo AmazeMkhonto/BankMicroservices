@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Transactions;
-using Bank.Service.AccountHolder.Models;
 
 namespace Bank.Service.Account.Models
 {
@@ -12,7 +11,7 @@ namespace Bank.Service.Account.Models
 
         [ForeignKey("AccountHolders")]
         public int AccountHolderId { get; set; }
-        public virtual AccountHolders AccountHolders { get; set; }
+        //public virtual AccountHolders AccountHolders { get; set; }
         public string AccountNumber { get; set; }
         public string AccountType { get; set; } // e.g., Cheque, Savings, FixedDeposit
         public string Name { get; set; }

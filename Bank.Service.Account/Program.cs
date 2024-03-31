@@ -1,5 +1,4 @@
 using Bank.Service.Account.Data;
-using Bank.Service.AccountHolder.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 

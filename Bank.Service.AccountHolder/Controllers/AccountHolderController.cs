@@ -1,10 +1,13 @@
-﻿using Azure;
+﻿using AutoMapper;
+using Azure;
 using Bank.Service.AccountHolder.Data;
 using Bank.Service.AccountHolder.Models;
 using Bank.Service.AccountHolder.Models.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
+using static Azure.Core.HttpHeader;
 
 namespace Bank.Service.AccountHolder.Controllers
 {
@@ -13,13 +16,14 @@ namespace Bank.Service.AccountHolder.Controllers
     public class AccountHolderController : ControllerBase
     {
         private readonly AppDbContext _db;
+        private ResponseDTO _response;
+        private IMapper _mapper;
 
-        private ResponseDTO _responseDTO;
-
-        public AccountHolderController(AppDbContext db)
+        public AccountHolderController(AppDbContext db, IMapper mapper)
         {
             _db = db;
-            _responseDTO = new ResponseDTO();
+            _response = new ResponseDTO();
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -28,15 +32,17 @@ namespace Bank.Service.AccountHolder.Controllers
             try
             {
                 IEnumerable<AccountHolders> objList = _db.AccountHolders.ToList();
-                return (ResponseDTO)(_responseDTO.Result = objList);
+                _response.Result = _mapper.Map<IEnumerable<AccountHolderDTO>>(objList);
+                return _response;
             }
             catch (Exception ex)
             {
-                _responseDTO.IsSuccess = false;
-                _responseDTO.Message = ex.Message;
+                _response.IsSuccess = false;
+                _response.Message = ex.Message;
             }
-            return _responseDTO;
+            return _response;
         }
+
 
 
         [HttpGet]
@@ -45,16 +51,78 @@ namespace Bank.Service.AccountHolder.Controllers
         {
             try
             {
-                AccountHolders obj = _db.AccountHolders.First(u=>u.Id==id);
-                return (ResponseDTO)(_responseDTO.Result = obj);
+                AccountHolders obj = _db.AccountHolders.First(u => u.Id == id);
+                _response.Result = _mapper.Map<AccountHolderDTO>(obj);
+                return _response;
             }
             catch (Exception ex)
             {
-                _responseDTO.IsSuccess = false;
-                _responseDTO.Message = ex.Message;
+                _response.IsSuccess = false;
+                _response.Message = ex.Message;
             }
-            return _responseDTO;
+            return _response;
         }
 
+
+
+        [HttpPost]
+        public ResponseDTO Post([FromBody] AccountHolderDTO dto)
+        {
+            try
+            {
+                AccountHolders obj = _mapper.Map<AccountHolders>(dto);
+                _db.AccountHolders.Add(obj);
+                _db.SaveChanges();
+                _response.Result = _mapper.Map<AccountHolderDTO>(obj);
+                return _response;
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Message = ex.Message;
+            }
+            return _response;
+        }
+
+
+        [HttpPut]
+        public ResponseDTO Put([FromBody] AccountHolderDTO dto)
+        {
+            try
+            {
+                AccountHolders obj = _mapper.Map<AccountHolders>(dto);
+                _db.AccountHolders.Update(obj);
+                _db.SaveChanges();
+                _response.Result = _mapper.Map<AccountHolderDTO>(obj);
+                return _response;
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Message = ex.Message;
+            }
+            return _response;
+        }
+
+        [HttpDelete]
+        [Route("{id:int}")]
+        public ResponseDTO Delete(int id)
+        {
+            try
+            {
+                AccountHolders obj = _db.AccountHolders.First(u => u.Id == id);
+                _db.AccountHolders.Remove(obj);
+                _db.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Message = ex.Message;
+            }
+            return _response;
+        }
     }
+
 }
+
