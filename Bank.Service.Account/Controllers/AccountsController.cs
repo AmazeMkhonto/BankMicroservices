@@ -64,12 +64,12 @@ namespace Bank.Service.Account.Controllers
 
 
         [HttpGet]
-        [Route("GetByCode/{user}")]
-        public ResponseDTO GetByUser(int user)
+        [Route("GetByUser/{AccountHolderId}")]
+        public ResponseDTO GetByUser(int accountHolderId)
         {
             try
             {
-                List<Accounts> accounts = _db.Accounts.Where(u => u.AccountHolderId == user).ToList();
+                List<Accounts> accounts = _db.Accounts.Where(u => u.AccountHolderId == accountHolderId).ToList();
                 if (accounts.Count == 0)
                 {
                     _response.Message = "No accounts found for this user.";
