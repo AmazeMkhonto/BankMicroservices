@@ -1,3 +1,5 @@
+using AutoMapper;
+using Bank.Service.Transactions;
 using Bank.Service.Transactions.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +11,10 @@ builder.Services.AddDbContext<TransactionDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("TransactionDb"));
 });
+
+IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
+builder.Services.AddSingleton(mapper);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
