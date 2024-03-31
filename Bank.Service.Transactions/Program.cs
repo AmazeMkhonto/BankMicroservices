@@ -1,6 +1,14 @@
+using Bank.Service.Transactions.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddDbContext<TransactionDbContext>(option =>
+{
+    option.UseSqlServer(builder.Configuration.GetConnectionString("TransactionDb"));
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -1,11 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-
-namespace Bank.Service.Transactions.Models
+﻿namespace Bank.Service.Transactions.Models.DTO
 {
-    public class Transactionss
+    public class TransactionDTO
     {
-        [Key]
         public int Id { get; set; }
         public long BankAccountId { get; set; }
         public string AccountType { get; set; }
