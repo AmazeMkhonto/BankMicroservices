@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Service.AccountHolder"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Service.Transactions", "Bank.Service.Transactions\Bank.Service.Transactions.csproj", "{415D690C-FF3E-4CA3-B787-4F5715EAF95D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.Service.Audit", "Bank.Service.Audit\Bank.Service.Audit.csproj", "{69D7A964-4B10-413F-9171-2173BADDA717}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.Service.Audit", "Bank.Service.Audit\Bank.Service.Audit.csproj", "{69D7A964-4B10-413F-9171-2173BADDA717}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankServices", "BankServices\BankServices.csproj", "{0FC3F8FF-1ECA-4BB2-B659-FAE4621EDD8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{69D7A964-4B10-413F-9171-2173BADDA717}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69D7A964-4B10-413F-9171-2173BADDA717}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69D7A964-4B10-413F-9171-2173BADDA717}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FC3F8FF-1ECA-4BB2-B659-FAE4621EDD8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FC3F8FF-1ECA-4BB2-B659-FAE4621EDD8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FC3F8FF-1ECA-4BB2-B659-FAE4621EDD8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FC3F8FF-1ECA-4BB2-B659-FAE4621EDD8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{A72E53B9-0002-4D8C-96BD-0B72AD6B0D56} = {CA1D6D7D-6954-40D7-A97C-D25BBD81A930}
 		{415D690C-FF3E-4CA3-B787-4F5715EAF95D} = {CA1D6D7D-6954-40D7-A97C-D25BBD81A930}
 		{69D7A964-4B10-413F-9171-2173BADDA717} = {CA1D6D7D-6954-40D7-A97C-D25BBD81A930}
+		{0FC3F8FF-1ECA-4BB2-B659-FAE4621EDD8A} = {E0B53177-441B-49DB-B78F-09EC0A5ABC46}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {708BBD77-7F69-4042-AFD7-8EFD3C2D0D02}

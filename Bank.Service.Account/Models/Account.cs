@@ -6,19 +6,31 @@ namespace Bank.Service.Account.Models
 {
     public class Accounts
     {
+        private static List<long> usedAccountNumbers = new List<long>();
+
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; } // account number
 
-        [ForeignKey("AccountHolders")]
-        public int AccountHolderId { get; set; }
-        //public virtual AccountHolders AccountHolders { get; set; }
-        public string AccountNumber { get; set; }
-        public string AccountType { get; set; } // e.g., Cheque, Savings, FixedDeposit
+        public Accounts()
+        {
+            long newAccountNumber = GenerateUniqueAccountNumber();
+            while (usedAccountNumbers.Contains(newAccountNumber))
+            {
+                newAccountNumber++; 
+            }
+            Id = newAccountNumber;
+            usedAccountNumbers.Add(newAccountNumber);
+        }
+
+        private long GenerateUniqueAccountNumber()
+        {
+            return 1000000001;
+        }
+        public string AccountType { get; set; } 
         public string Name { get; set; }
-        public string Status { get; set; } // e.g., Active, Inactive
+        public string Status { get; set; }
         public decimal AvailableBalance { get; set; }
+        public int AccountHolderId { get; set; }
 
-        // You can add a collection of Transactions if relevant to your design
-        //public ICollection<Transaction> Transactions { get; set; }
     }
 }

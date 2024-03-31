@@ -21,8 +21,5 @@ namespace Bank.Service.AccountHolder.Models
             
             public string EmailAddress { get; set; }
 
-            // You can add a collection of BankAccounts if relevant to your design
-            //public ICollection<BankAccount> BankAccounts { get; set; }
-        
     }
 }
