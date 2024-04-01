@@ -10,14 +10,16 @@ namespace Bank.Service.Auth.Service
 	{
 		private readonly ApplicationDbContext _db;
 		private readonly UserManager<ApplicationUser> _userManager;
-		private readonly RoleManager<IdentityRole> _roleManager;
+		private readonly IJwtTokenGenerator _jwtTokenGenerator;
 
-		public AuthService(ApplicationDbContext db,
-			UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+
+		public AuthService(ApplicationDbContext db, IJwtTokenGenerator jwtTokenGenerator,
+			UserManager<ApplicationUser> userManager)
 		{
 			_db = db;
+			_jwtTokenGenerator = jwtTokenGenerator;
 			_userManager = userManager;
-			_roleManager = roleManager;
+			
 		}
 
 
@@ -32,9 +34,8 @@ namespace Bank.Service.Auth.Service
 				return new LoginResponseDTO() { User = null, Token = "" };
 			}
 
-			//if user was found , Generate JWT Token
-			//var roles = await _userManager.GetRolesAsync(user);
-			//var token = _jwtTokenGenerator.GenerateToken(user, roles);
+			//if user was found, Generate JWT Token
+			var token = _jwtTokenGenerator.GenerateToken(user);
 
 			ApplicationUserDTO userDTO = new()
 			{
@@ -50,8 +51,8 @@ namespace Bank.Service.Auth.Service
 
 			LoginResponseDTO loginResponseDto = new LoginResponseDTO()
 			{
-				User = userDTO
-				//Token = token
+				User = userDTO,
+				Token = token
 			};
 
 			return loginResponseDto;
