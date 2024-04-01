@@ -4,8 +4,9 @@
     {
         public static string AccountHolderAPIBase { get; set; }
         public static string AccountAPIBase { get; set; }
+		public static string TransactionAPIBase { get; set; }
 
-        public enum ApiType
+		public enum ApiType
         {
             GET,
             POST,
