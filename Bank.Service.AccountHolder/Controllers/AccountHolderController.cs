@@ -1,13 +1,8 @@
 ﻿using AutoMapper;
-using Azure;
 using Bank.Service.AccountHolder.Data;
 using Bank.Service.AccountHolder.Models;
 using Bank.Service.AccountHolder.Models.DTO;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection.Metadata.Ecma335;
-using static Azure.Core.HttpHeader;
 
 namespace Bank.Service.AccountHolder.Controllers
 {
@@ -123,6 +118,5 @@ namespace Bank.Service.AccountHolder.Controllers
             return _response;
         }
     }
-
 }
 

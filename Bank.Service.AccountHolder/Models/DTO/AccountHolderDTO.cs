@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Bank.Service.AccountHolder.Models.DTO
+﻿namespace Bank.Service.AccountHolder.Models.DTO
 {
     public class AccountHolderDTO
     {

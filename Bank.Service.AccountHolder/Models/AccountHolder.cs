@@ -4,7 +4,6 @@ namespace Bank.Service.AccountHolder.Models
 {
     public class AccountHolders
     {
-      
             [Key]
             public int Id { get; set; }
             [Required]
@@ -18,8 +17,6 @@ namespace Bank.Service.AccountHolder.Models
             public string ResidentialAddress { get; set; }
             [Required]
             public string MobileNumber { get; set; }
-            
             public string EmailAddress { get; set; }
-
     }
 }

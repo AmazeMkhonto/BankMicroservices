@@ -10,7 +10,6 @@ namespace Bank.Service.AccountHolder.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AccountHolders>().HasData(
@@ -46,9 +45,7 @@ namespace Bank.Service.AccountHolder.Data
                     ResidentialAddress = "789 Oak Lane, Durban",
                     MobileNumber = "0009876543",
                     EmailAddress = "michael.jones@example.com"
-            }
-        );
-
+            } );
 
         }
     }
