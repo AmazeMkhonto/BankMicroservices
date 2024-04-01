@@ -11,11 +11,14 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient<IAccountHolderService, AccountHolderService>();
+builder.Services.AddHttpClient<IAccountService, AccountService>();
 
 SD.AccountHolderAPIBase = builder.Configuration["ServiceUrls:AccountHolderAPI"];
+SD.AccountAPIBase = builder.Configuration["ServiceUrls:AccountAPI"];
 
 builder.Services.AddScoped<IBaseService, BaseService>();
 builder.Services.AddScoped<IAccountHolderService, AccountHolderService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
 
 
 var app = builder.Build();
