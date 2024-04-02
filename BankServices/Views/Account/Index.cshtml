@@ -36,6 +36,7 @@
                         Available Balance
                     </th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -58,6 +59,11 @@
                             @((item.AvailableBalance).ToString("c"))
                         </td>
                         <td>
+                        </td>
+                        <td>
+                            <a asp-action="Create" asp-route-couponId="" asp-controller="Transaction" class="btn btn-primary">
+                                <i class="bi bi-trash">Withdraw</i>
+                            </a>
                         </td>
                     </tr>
                 }

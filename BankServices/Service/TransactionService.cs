@@ -1,5 +1,6 @@
 ﻿using BankServices.Models;
 using BankServices.Service.IService;
+using BankServices.Utility;
 
 namespace BankServices.Service
 {
@@ -10,29 +11,52 @@ namespace BankServices.Service
 		{
 			_baseService = baseService;
 		}
-		public Task<ResponseDTO?> CreateTransactionAsync(TransactionDTO transactionDTO)
+		public async Task<ResponseDTO?> CreateTransactionAsync(TransactionDTO transactionDTO)
 		{
-			throw new NotImplementedException();
-		}
+            return await _baseService.SendAsync(new RequestDTO()
+            {
+                ApiType = SD.ApiType.POST,
+                Data = transactionDTO,
+                Url = SD.TransactionAPIBase + "/api/Transaction"
+            });
+        }
 
-		public Task<ResponseDTO?> DeleteTransactionAsync(int id)
+		public async Task<ResponseDTO?> DeleteTransactionAsync(int id)
 		{
-			throw new NotImplementedException();
-		}
+            return await _baseService.SendAsync(new RequestDTO()
+            {
+                ApiType = SD.ApiType.DELETE,
+                Url = SD.TransactionAPIBase + "/api/Transaction/" + id
+            });
+        }
 
-		public Task<ResponseDTO?> GetAllTransactionsAsync()
+		public async Task<ResponseDTO?> GetAllTransactionsAsync()
 		{
-			throw new NotImplementedException();
-		}
+            return await _baseService.SendAsync(new RequestDTO()
+            {
+                ApiType = SD.ApiType.GET,
+                Url = SD.TransactionAPIBase + "/api/Transaction"
+                //Url = "https://localhost:7237/api/Transaction"
+            });
+        }
 
-		public Task<ResponseDTO?> GetTransactionByIdAsync(int id)
+		public async Task<ResponseDTO?> GetTransactionByIdAsync(int id)
 		{
-			throw new NotImplementedException();
-		}
+            return await _baseService.SendAsync(new RequestDTO()
+            {
+                ApiType = SD.ApiType.GET,
+                Url = SD.TransactionAPIBase + "/api/Transaction/" + id
+            });
+        }
 
-		public Task<ResponseDTO?> UpdateTransactionAsync(TransactionDTO transactionDTO)
+		public async Task<ResponseDTO?> UpdateTransactionAsync(TransactionDTO transactionDTO)
 		{
-			throw new NotImplementedException();
-		}
+            return await _baseService.SendAsync(new RequestDTO()
+            {
+                ApiType = SD.ApiType.PUT,
+                Data = transactionDTO,
+                Url = SD.TransactionAPIBase + "/api/Transaction"
+            });
+        }
 	}
 }
