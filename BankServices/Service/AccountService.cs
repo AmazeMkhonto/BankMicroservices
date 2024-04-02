@@ -22,7 +22,7 @@ namespace BankServices.Service
             });
         }
 
-        public async Task<ResponseDTO?> DeleteAccountAsync(int id)
+        public async Task<ResponseDTO?> DeleteAccountAsync(long id)
         {
             return await _baseService.SendAsync(new RequestDTO()
             {
@@ -40,7 +40,7 @@ namespace BankServices.Service
             });
         }
 
-        public async Task<ResponseDTO?> GetAccountByUserAsync(int id)
+        public async Task<ResponseDTO?> GetAccountByUserIdAsync(string id)
         {
             return await _baseService.SendAsync(new RequestDTO()
             {

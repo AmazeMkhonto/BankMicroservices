@@ -6,9 +6,9 @@ namespace BankServices.Service.IService
     {
         Task<ResponseDTO?> GetAllAccountsAsync();
         Task<ResponseDTO?> GetAccountByIdAsync(long id);
-        Task<ResponseDTO?> GetAccountByUserAsync(int id);
+        Task<ResponseDTO?> GetAccountByUserIdAsync(string id);
         Task<ResponseDTO?> CreateAccountAsync(AccountDTO accountDTO);
         Task<ResponseDTO?> UpdateAccountAsync(AccountDTO accountDTO);
-        Task<ResponseDTO?> DeleteAccountAsync(int id);
+        Task<ResponseDTO?> DeleteAccountAsync(long id);
     }
 }

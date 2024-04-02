@@ -63,31 +63,31 @@ namespace Bank.Service.Account.Controllers
 
 
 
-        //[HttpGet]
-        //[Route("GetByUser/{AccountHolderId}")]
-        //public ResponseDTO GetByUser(int accountHolderId)
-        //{
-        //    try
-        //    {
-        //        List<Accounts> accounts = _db.Accounts.Where(u => u.AccountHolderId == accountHolderId).ToList();
-        //        if (accounts.Count == 0)
-        //        {
-        //            _response.Message = "No accounts found for this user.";
-        //        }
-        //        else
-        //        {
-        //            List<AccountDTO> accountDtos = _mapper.Map<List<AccountDTO>>(accounts);
-        //            _response.Result = accountDtos;
-        //        }
-        //        return _response;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _response.IsSuccess = false;
-        //        _response.Message = ex.Message;
-        //    }
-        //    return _response;
-        //}
+        [HttpGet]
+        [Route("GetByUser/{AccountHolderId}")]
+        public ResponseDTO GetByUser(string accountHolderId)
+        {
+            try
+            {
+                List<Accounts> accounts = _db.Accounts.Where(u => u.AccountHolderId == accountHolderId).ToList();
+                if (accounts.Count == 0)
+                {
+                    _response.Message = "No accounts found for this user.";
+                }
+                else
+                {
+                    List<AccountDTO> accountDtos = _mapper.Map<List<AccountDTO>>(accounts);
+                    _response.Result = accountDtos;
+                }
+                return _response;
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Message = ex.Message;
+            }
+            return _response;
+        }
 
 
 
