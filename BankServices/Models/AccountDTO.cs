@@ -7,6 +7,6 @@
 		public string Name { get; set; }
 		public string Status { get; set; }
 		public decimal AvailableBalance { get; set; }
-		public int AccountHolderId { get; set; }
+		public string AccountHolderId { get; set; }
 	}
 }

@@ -12,13 +12,14 @@ namespace BankServices.Service
     {
 
         private readonly IHttpClientFactory _httpClientFactory;
-
-        public BaseService(IHttpClientFactory httpClientFactory)
+        private readonly ITokenProvider _tokenProvider;
+        public BaseService(IHttpClientFactory httpClientFactory, ITokenProvider tokenProvider)
         {
             _httpClientFactory = httpClientFactory;
+            _tokenProvider = tokenProvider;
         }
 
-        public async Task<ResponseDTO?> SendAsync(RequestDTO requestDto)
+        public async Task<ResponseDTO?> SendAsync(RequestDTO requestDto, bool withBearer = true)
         {
             try
             {
@@ -84,6 +85,8 @@ namespace BankServices.Service
                 return dto;
             }
         }
+
+       
     }
     }
 

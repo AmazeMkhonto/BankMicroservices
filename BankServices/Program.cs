@@ -10,18 +10,20 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient();
-builder.Services.AddHttpClient<IAccountHolderService, AccountHolderService>();
+
 builder.Services.AddHttpClient<IAccountService, AccountService>();
 builder.Services.AddHttpClient<ITransactionService, TransactionService>();
+builder.Services.AddHttpClient<IAuthService, AuthService>();
 
-SD.AccountHolderAPIBase = builder.Configuration["ServiceUrls:AccountHolderAPI"];
 SD.AccountAPIBase = builder.Configuration["ServiceUrls:AccountAPI"];
 SD.TransactionAPIBase = builder.Configuration["ServiceUrls:TransactionAPI"];
+SD.AuthAPIBase = builder.Configuration["ServiceUrls:AuthAPI"];
 
 builder.Services.AddScoped<IBaseService, BaseService>();
-builder.Services.AddScoped<IAccountHolderService, AccountHolderService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ITokenProvider, TokenProvider>();
 
 
 var app = builder.Build();

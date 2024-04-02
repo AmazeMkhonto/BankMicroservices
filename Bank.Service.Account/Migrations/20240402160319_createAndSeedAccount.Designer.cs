@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bank.Service.Account.Migrations
 {
     [DbContext(typeof(AccountDbContext))]
-    [Migration("20240331180716_CreateAccountsDb")]
-    partial class CreateAccountsDb
+    [Migration("20240402160319_createAndSeedAccount")]
+    partial class createAndSeedAccount
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,8 +32,9 @@ namespace Bank.Service.Account.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<int>("AccountHolderId")
-                        .HasColumnType("int");
+                    b.Property<string>("AccountHolderId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AccountType")
                         .IsRequired()
@@ -53,6 +54,26 @@ namespace Bank.Service.Account.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Accounts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1000000003L,
+                            AccountHolderId = "37f65fd1-4adf-4e70-b152-1e91625ac26d",
+                            AccountType = "Cheque",
+                            AvailableBalance = 500.00m,
+                            Name = "John Doe's Account",
+                            Status = "Active"
+                        },
+                        new
+                        {
+                            Id = 1000000004L,
+                            AccountHolderId = "77d2e3ab-469d-469a-b6b9-be14a8ba5a51",
+                            AccountType = "Savings",
+                            AvailableBalance = 1000.00m,
+                            Name = "Jane Smith's Account",
+                            Status = "Active"
+                        });
                 });
 #pragma warning restore 612, 618
         }
