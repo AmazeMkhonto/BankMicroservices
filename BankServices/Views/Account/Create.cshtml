@@ -3,15 +3,13 @@
 <form asp-action="Create">
     <br />
     <div class="container border p-3">
-        <h1 class="text-white text-center">Create Account</h1>
-
-        <hr />
-        <div class="row">
+        <h1 class="text-center">Create Account</h1>  <div class="row">
             <div class="col-2">
                 <label class="control-label pt-2" style="font-size:20px;">Account Type</label>
             </div>
             <div class="col-10 pb-3">
                 <select asp-for="AccountType" class="form-control">
+                    <option value="">--select--</option>
                     <option value="Cheque">Cheque</option>
                     <option value="Savings">Savings</option>
                     <option value="Fixed Deposit">Fixed Deposit</option>
@@ -23,15 +21,14 @@
                 <label class="control-label pt-2" style="font-size:20px;">Name</label>
             </div>
             <div class="col-10 pb-3">
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <input asp-for="Name" class="form-control" placeholder="Enter your full name" />  <span asp-validation-for="Name" class="text-danger"></span>
             </div>
 
             <div class="col-2">
                 <label class="control-label pt-2" style="font-size:20px;">Available Balance</label>
             </div>
             <div class="col-10 pb-3">
-                <input asp-for="AvailableBalance" type="number" class="form-control" /> <span asp-validation-for="AvailableBalance" class="text-danger"></span>
+                <input asp-for="AvailableBalance" type="number" class="form-control" placeholder="Enter initial balance" />  <span asp-validation-for="AvailableBalance" class="text-danger"></span>
             </div>
 
             <div class="col-5 offset-2">
@@ -44,7 +41,6 @@
 
     </div>
 </form>
-
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
