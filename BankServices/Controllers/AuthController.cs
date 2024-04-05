@@ -51,7 +51,6 @@ namespace BankServices.Controllers
 
 
 
-
         [HttpPost]
         public async Task<IActionResult> Register(RegisterRequestDTO obj)
         {
@@ -70,8 +69,6 @@ namespace BankServices.Controllers
             }
             return View(obj);
         }
-
-
 
 
         public async Task<IActionResult> Logout()
